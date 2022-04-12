@@ -3,9 +3,11 @@
  * Authors: Daniel Moraes and Vitor Jun
  */
 
-/*
- * Include LIBRARIES
- */
+/******************************
+ *      Include LIBRARIES
+*******************************/
+ // Header with WIFI secrets and 
+#include "confidentialStuff.h"
 
 #include "UbidotsEsp32Mqtt.h"
 
@@ -22,16 +24,9 @@
 /*
  * Define constants
  */
-#define MQTTCLIENTNAME "2YC8FpFr2JQMNKXstteo"
-
 unsigned long timer;
-const char * WIFI_SSID = "Moraes_2.4G";
-const char * WIFI_PASSWORD = "WICnw@175";
-const char * UBIDOTS_TOKEN = "BBFF-xfpyryGAWUEx8KqxW1UZNeeLLjwOJ2";
 
 const int OnboardLED = 2;
-const char* SUB_DEVICE_LABEL = "switch";
-const char* SUB_VARIABLE_LABEL = "LED";
 
 const int MPU_addr = 0x68;
 int16_t AcX, AcY, AcZ, Tmp, GyX, GyY, GyZ;
@@ -70,22 +65,22 @@ void setup() {
   // Log Configuration
   Log.begin(LOG_LEVEL_VERBOSE, & Serial);
   Log.setShowLevel(true);
-  Serial.print("Procurando pelo MPU6050");
+  Serial.print("Searching for MPU6050");
 
   if (!mpu.begin()) {
-    Serial.print("Nao achamos o MPU6050 :( ");
+    Serial.print("We didn't found the MPU6050 sensor :( ");
     while (1) {
       delay(100);
     }
   }
 
-  Serial.println("MPU6050 achado :)");
-  Serial.println("Configurando sensor MPU");
+  Serial.println("MPU6050 Found :)");
+  Serial.println("Setting up the MPU");
   mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
   mpu.setGyroRange(MPU6050_RANGE_500_DEG);
   mpu.setFilterBandwidth(MPU6050_BAND_5_HZ);
 
-  Serial.println("Configurando cliente do ubidots");
+  Serial.println("Setting up the ubidots client");
   //ubidots.setDebug(true);  // uncomment this to make debug messages available
   ubidots.connectToWifi(WIFI_SSID, WIFI_PASSWORD);
   ubidots.setCallback(callback);

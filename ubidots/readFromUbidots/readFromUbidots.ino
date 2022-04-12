@@ -6,6 +6,7 @@
 /*
  * Include LIBRARIES
  */
+#include "confidentialStuff.h"
 
 #include "UbidotsEsp32Mqtt.h"
 
@@ -18,16 +19,6 @@
 /***********************************
  * Define constants
 ***********************************/
-#define MQTTCLIENTNAME "2YC8FpFr2JQMNKXstteo"
-
-unsigned long timer;
-const char * WIFI_SSID = "Moraes_2.4G";
-const char * WIFI_PASSWORD = "WICnw@175";
-const char * UBIDOTS_TOKEN = "BBFF-xfpyryGAWUEx8KqxW1UZNeeLLjwOJ2";
-
-const int OnboardLED = 2;
-const char* SUB_DEVICE_LABEL = "switch";
-const char* SUB_VARIABLE_LABEL = "LED";
 
 Ubidots ubidots(UBIDOTS_TOKEN);
 
