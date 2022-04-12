@@ -95,13 +95,13 @@ void loop() {
   mpu.getEvent(&a, &g, &temp);
 
   /* Print out the values */
-  Serial.print("Acceleration X: ");
-  Serial.print(a.acceleration.x);
-  Serial.print(", Y: ");
-  Serial.print(a.acceleration.y);
-  Serial.print(", Z: ");
-  Serial.print(a.acceleration.z);
-  Serial.print(" m/s^2");
+//  Serial.print("Acceleration X: ");
+//  Serial.print(a.acceleration.x);
+//  Serial.print(", Y: ");
+//  Serial.print(a.acceleration.y);
+//  Serial.print(", Z: ");
+//  Serial.print(a.acceleration.z);
+//  Serial.print(" m/s^2");
 
   Serial.print("Rotation X: ");
   Serial.print(g.gyro.x);
@@ -109,11 +109,11 @@ void loop() {
   Serial.print(g.gyro.y);
   Serial.print(", Z: ");
   Serial.print(g.gyro.z);
-  Serial.print(" rad/s");
+  Serial.println(" rad/s");
 
   Serial.print("Temperature: ");
   Serial.print(temp.temperature);
-  Serial.print(" degC");
+  Serial.println(" degC");
 
   Serial.print("");
   delay(500);
